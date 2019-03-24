@@ -39,8 +39,7 @@ public class SpeedBoossSkill extends WeaponSkill implements MovementSkill {
 	public void start() 
 	{
 		StandardFinders  sf = new StandardFinders("Czas");
-		sf.find(item);
-		
+		effect = new PotionEffect(PotionEffectType.SPEED,(int)sf.find(item), 1);
 	}
 
 	@Override

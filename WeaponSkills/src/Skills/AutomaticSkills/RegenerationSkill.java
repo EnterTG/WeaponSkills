@@ -42,7 +42,8 @@ public class RegenerationSkill extends WeaponSkill implements AutomaticSkill{
 	}
 
 	@Override
-	public void start() {
+	public void start() 
+	{
 		Bukkit.getScheduler().runTaskLaterAsynchronously(Core.getCore(), this, getCoolDown());
 	}
 
@@ -67,7 +68,6 @@ public class RegenerationSkill extends WeaponSkill implements AutomaticSkill{
 				p.setHealth(p.getHealth()+amount); 
 		else
 				p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()); 
-		
 	}
 
 }

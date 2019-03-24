@@ -7,12 +7,18 @@ import org.bukkit.inventory.ItemStack;
 
 import Skills.WeaponSkill;
 import Skills.AutomaticSkills.RegenerationSkill;
+import Skills.ComboSkills.ScreamSkill;
+import Skills.LoadingSkills.AtackBlowSkill;
+import Skills.LoadingSkills.SpeedBoossSkill;
 
 public class SkillFinder {
 	
 	private enum WeaponsSkills
 	{
-		Regeneration("--Skill Regeneracji--", (pw,i) -> new RegenerationSkill(pw,i));
+		Regeneration("--Skill Regeneracji--", (pw,i) -> new RegenerationSkill(pw,i)),
+		Scream("--Skill Krzyk--", (pw,i) -> new ScreamSkill(pw,i)),
+		Blow("--Skill uderzenie--", (pw,i) -> new AtackBlowSkill(pw,i)),
+		FastBoots("--Sybkie buty--", (pw,i) -> new SpeedBoossSkill(pw,i));
 		
 		private SkillGeter weaponSkill;
 		private String name;

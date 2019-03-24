@@ -31,4 +31,8 @@ public class PlayersWeaponsManager {
 	{
 		return playersWeapons.get(p);
 	}
+	public void removePlayer(Player p)
+	{
+		playersWeapons.remove(p);
+	}
 }

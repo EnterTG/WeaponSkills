@@ -16,7 +16,7 @@ public class Core extends JavaPlugin{
 	public static Core getCore()
 	{return core;}
 	
-	private Core()
+	public Core()
 	{
 		
 	}
@@ -32,7 +32,6 @@ public class Core extends JavaPlugin{
 		pm.registerEvents(new PlayerInteractListener(), this);
 		pm.registerEvents(new PlayerJoinListener(), this);
 		pm.registerEvents(new PlayerMoveListener(), this);
-		
 	}
 	
 	@Override

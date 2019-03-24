@@ -20,23 +20,27 @@ public class SkillFinder {
 		Blow("--Skill uderzenie--", (pw,i) -> new AtackBlowSkill(pw,i)),
 		FastBoots("--Sybkie buty--", (pw,i) -> new SpeedBoossSkill(pw,i));
 		
-		private SkillGeter weaponSkill;
+		private SkillGeter skillgeter;
 		private String name;
 		WeaponsSkills(String n,SkillGeter sg)
 		{
-			weaponSkill = sg;
+			skillgeter = sg;
 			name = n;
 		}
 		
 		private boolean find(ItemStack item)
 		{
-			List<String> lore = item.getItemMeta().getLore();
-			return lore.stream().filter(s -> s.contains(name)).findFirst().isPresent();
+			if(item.hasItemMeta() && item.getItemMeta().hasLore())
+			{
+				List<String> lore = item.getItemMeta().getLore();
+				return lore.stream().filter(s -> s.contains(name)).findFirst().isPresent();
+			}
+			return false;
 		}
 		
-		private WeaponSkill getWeaponSkill(PlayerWeapons pw,ItemStack item)
+		public WeaponSkill getWeaponSkill(PlayerWeapons pw,ItemStack item)
 		{
-			return weaponSkill.getWeaponSkill(pw, item);
+			return skillgeter.getWeaponSkill(pw, item);
 		}
 	}
 	@FunctionalInterface
@@ -48,6 +52,7 @@ public class SkillFinder {
 	
 	public static WeaponSkill findSkill(PlayerWeapons pw,ItemStack item)
 	{
-		return Stream.of(WeaponsSkills.values()).filter(ws -> ws.find(item)).findFirst().orElse(null).getWeaponSkill(pw, item);
+		WeaponsSkills w = Stream.of(WeaponsSkills.values()).filter(ws -> ws.find(item)).findFirst().orElse(null);
+		return w == null ? null : w.getWeaponSkill(pw, item);
 	}
 }

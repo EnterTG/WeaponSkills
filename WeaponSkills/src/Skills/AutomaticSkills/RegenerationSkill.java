@@ -64,7 +64,7 @@ public class RegenerationSkill extends WeaponSkill implements AutomaticSkill{
 	{
 		Player p = playerWeapons.player;
 		
-		if( p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() < (p.getHealth()+amount) ) 
+		if( p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue() > (p.getHealth()+amount) ) 
 				p.setHealth(p.getHealth()+amount); 
 		else
 				p.setHealth(p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getValue()); 

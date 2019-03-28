@@ -5,6 +5,8 @@ import org.bukkit.Bukkit;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import Listeners.PlayerAtackListener;
+import Listeners.PlayerChangeSlotListener;
 import Listeners.PlayerCloseInventoryListener;
 import Listeners.PlayerInteractListener;
 import Listeners.PlayerJoinListener;
@@ -32,6 +34,8 @@ public class Core extends JavaPlugin{
 		pm.registerEvents(new PlayerInteractListener(), this);
 		pm.registerEvents(new PlayerJoinListener(), this);
 		pm.registerEvents(new PlayerMoveListener(), this);
+		pm.registerEvents(new PlayerAtackListener(), this);
+		pm.registerEvents(new PlayerChangeSlotListener(), this);
 	}
 	
 	@Override

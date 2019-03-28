@@ -29,7 +29,8 @@ public class AtackBlowSkill extends WeaponSkill implements AtackLoadingSkill{
 	{
 		final Player p = playerWeapons.player;
 		p.getWorld().spawnParticle(Particle.EXPLOSION_NORMAL, p.getLocation(), 1);
-		playerWeapons.player.getNearbyEntities(2, 2, 2).stream().filter( e-> e instanceof Monster).map(e -> (Monster)e).forEach(e -> e.damage(power, p));
+		playerWeapons.player.getNearbyEntities(2, 2, 2).stream().filter( e-> e instanceof Monster).map(e -> (Monster)e).forEach(e -> e.damage(power));
+		setLoad(0);
 	}
 
 	@Override
